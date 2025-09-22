@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-Time Clock & Framework Comparison</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f1724;
+      color: #f0f0f0;
+      margin: 0;
+      padding: 2rem;
+      line-height: 1.6;
+    }
+    h1 {
+      color: #4a90e2;
+    }
+    .clock {
+      font-size: 2rem;
+      margin: 1rem 0;
+      padding: 1rem;
+      background: rgba(255,255,255,0.05);
+      display: inline-block;
+      border-radius: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 2rem;
+    }
+    th, td {
+      border: 1px solid rgba(255,255,255,0.2);
+      padding: 0.75rem;
+      text-align: left;
+    }
+    th {
+      background: rgba(255,255,255,0.1);
+    }
+  </style>
+</head>
+<body>
+  <h1>⏰ Real-Time Clock</h1>
+  <div id="clock" class="clock"></div>
+
+  <h1>⚖️ Framework Comparison</h1>
+  <table>
+    <tr>
+      <th>Feature</th>
+      <th>React.js</th>
+      <th>Angular</th>
+    </tr>
+    <tr>
+      <td>Architecture</td>
+      <td>Component-based</td>
+      <td>MVC (Model-View-Controller)</td>
+    </tr>
+    <tr>
+      <td>Learning Curve</td>
+      <td>Easy to Moderate</td>
+      <td>Steeper</td>
+    </tr>
+    <tr>
+      <td>Data Binding</td>
+      <td>One-way binding</td>
+      <td>Two-way binding</td>
+    </tr>
+    <tr>
+      <td>Best For</td>
+      <td>Single Page Applications, Dashboards</td>
+      <td>Enterprise-scale applications</td>
+    </tr>
+  </table>
+
+  <!-- External JS -->
+  <script src="clock.js"></script>
+</body>
+</html>

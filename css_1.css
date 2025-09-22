@@ -1,0 +1,75 @@
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+  color: #f0f0f0;
+}
+
+body {
+  background: #0f1724;
+  margin: 0;
+  min-height: 100vh;
+  padding: 2rem;
+}
+
+.demo-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1rem;
+  border-radius: 10px;
+}
+
+.fg-sample {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.fg-sample .box {
+  flex: 1;
+  padding: 0.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.grid-sample {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.5rem;
+  margin-top: 0.5rem;
+}
+
+.grid-sample .g {
+  padding: 0.6rem;
+  background: rgba(255, 255, 255, 0.1);
+  text-align: center;
+}
+
+.pulse {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: #4a90e2;
+  animation: beat 1.8s infinite;
+}
+
+@keyframes beat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.clock {
+  margin: 0.6rem 0;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.2);
+}

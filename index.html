@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Styling Techniques & Real-time Clock Demo</title>
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Internal CSS -->
+  <style>
+    :root{
+      --primary:#4a90e2;
+      --accent:#e24a6f;
+      --card-bg:rgba(255,255,255,0.06);
+    }
+    .internal-card{
+      background:var(--card-bg);
+      border-radius:12px;
+      padding:1rem;
+      box-shadow:0 6px 18px rgba(0,0,0,0.12);
+      backdrop-filter: blur(4px);
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <h1>Styling Techniques Showcase</h1>
+    <p class="subtitle">External, internal, inline CSS + flexbox, grid, animations</p>
+  </header>
+
+  <main>
+    <section class="demo-grid">
+      <article class="card internal-card">
+        <h2>External CSS</h2>
+        <p>Layout and base styles controlled by <code>styles.css</code>.</p>
+      </article>
+
+      <article class="card internal-card">
+        <h2>Internal CSS</h2>
+        <p>Scoped component-level styles + CSS variables.</p>
+      </article>
+
+      <article class="card internal-card" style="border:2px dashed var(--accent)">
+        <h2>Inline CSS</h2>
+        <p style="margin:0;">This paragraph uses inline styles.</p>
+      </article>
+
+      <article class="card internal-card">
+        <h2>Flexbox & Grid</h2>
+        <div class="fg-sample">
+          <div class="box">Flex A</div><div class="box">Flex B</div><div class="box">Flex C</div>
+        </div>
+        <div class="grid-sample">
+          <div class="g">1</div><div class="g">2</div><div class="g">3</div><div class="g">4</div>
+        </div>
+      </article>
+
+      <article class="card internal-card">
+        <h2>CSS Animation</h2>
+        <div class="pulse"></div>
+      </article>
+
+      <article class="card internal-card">
+        <h2>Real-time Clock</h2>
+        <div id="clock" class="clock"></div>
+        <button id="toggleFormat">Toggle 12/24h</button>
+      </article>
+    </section>
+
+    <section class="card internal-card">
+      <h2>Framework Comparison: React vs Angular</h2>
+      <div id="comparison"></div>
+    </section>
+  </main>
+
+  <footer class="site-footer"><small>Assignment demo</small></footer>
+
+  <script>
+  const clockEl = document.getElementById('clock');
+  const btn = document.getElementById('toggleFormat');
+  let use24 = true;
+
+  function pad(n){ return n.toString().padStart(2,'0'); }
+  function updateClock(){
+    const now = new Date();
+    let hrs = now.getHours();
+    let suffix = '';
+    if(!use24){
+      suffix = hrs>=12?' PM':' AM';
+      hrs = hrs%12 || 12;
+    }
+    clockEl.textContent = `${pad(hrs)}:${pad(now.getMinutes())}:${pad(now.getSeconds())}${suffix}`;
+  }
+  btn.onclick = ()=>{ use24=!use24; updateClock(); };
+  setInterval(updateClock,1000); updateClock();
+
+  // Comparison table
+  const rows = [
+    ["Architecture","React: Component lib, Virtual DOM","Angular: Full MVC-like framework, DI, RxJS"],
+    ["Language","JS/JSX","TypeScript"],
+    ["Learning Curve","Gentle to moderate","Steep (decorators, modules)"],
+    ["Use Cases","SPAs, component libs","Enterprise dashboards"],
+  ];
+  const tbl = document.createElement('table');
+  rows.forEach(([k,a,b])=>{
+    const tr=document.createElement('tr');
+    tr.innerHTML=`<th>${k}</th><td>${a}</td><td>${b}</td>`;
+    tbl.appendChild(tr);
+  });
+  document.getElementById('comparison').appendChild(tbl);
+  </script>
+</body>
+</html>
